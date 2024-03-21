@@ -3,6 +3,7 @@ const app = express()
 const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 const colors = require('colors')
+const { log } = require('console')
 
 app.use(express.static(__dirname + '/src'))
 
@@ -20,5 +21,6 @@ io.on('connection', (socket) => {
 const PORT = process.env.PORT || 3000
 
 http.listen(PORT, () => {
+    console.log('Listing on port number 3000');
     console.log(`Server running on http://localhost:${PORT}`.bgGreen.black)
 })
